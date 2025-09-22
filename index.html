@@ -4,506 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Nexus Restaurant</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        /* Header Styles */
-        :root {
-            --primary-green: #218838;
-            --primary-green-dark: #166c2b;
-            --accent-orange: #ffb347;
-            --accent-orange-dark: #e89c2a;
-            --light-bg: #f6fff6;
-            --text-dark: #222;
-            --text-light: #fff;
-        }
-
-        header {
-            position: static;
-            width: 100%;
-            background: var(--primary-green);
-            z-index: 1000;
-            padding: 1rem 0;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            color: var(--text-light);
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .logo::before {
-            content: "🍽️";
-            margin-right: 0.5rem;
-            font-size: 1.5rem;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-orange);
-        }
-
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-green-dark) 0%, var(--primary-green) 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 0 2rem;
-            position: relative;
-            margin-top: 0;
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .hero-text h1 {
-            font-size: 4rem;
-            color: var(--accent-orange);
-            margin-bottom: 1rem;
-            font-family: 'Brush Script MT', cursive;
-            font-weight: 400;
-        }
-
-        .hero-text .utensils {
-            font-size: 2rem;
-            margin-left: 1rem;
-        }
-
-        .hero-text p {
-            color: var(--text-light);
-            font-size: 1rem;
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: transparent;
-            color: var(--accent-orange);
-            border: 2px solid var(--accent-orange);
-            border-radius: 25px;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-orange);
-            color: var(--primary-green-dark);
-        }
-
-        .hero-image {
-            position: relative;
-        }
-
-        .hero-image img {
-            width: 100%;
-            border-radius: 50%;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        .social-links {
-            position: absolute;
-            left: -60px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            color: var(--accent-orange);
-            font-size: 1.2rem;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: var(--primary-green);
-        }
-
-        /* Story Section */
-        .story {
-            padding: 5rem 2rem;
-            background: var(--light-bg);
-        }
-
-        .story-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .story-images {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .story-images img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .story-content h2 {
-            font-size: 2.5rem;
-            color: var(--primary-green-dark);
-            margin-bottom: 0.5rem;
-            font-style: italic;
-        }
-
-        .story-content h2 span {
-            color: var(--accent-orange);
-        }
-
-        .story-content p {
-            color: #666;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-
-        .btn-secondary {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: transparent;
-            color: var(--accent-orange);
-            border: 2px solid var(--accent-orange);
-            border-radius: 25px;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .btn-secondary:hover {
-            background: var(--accent-orange);
-            color: var(--primary-green-dark);
-        }
-
-        /* Services Section */
-        .services {
-            padding: 5rem 2rem;
-            background: linear-gradient(135deg, var(--primary-green-dark) 0%, var(--primary-green) 100%);
-            color: var(--text-light);
-            position: relative;
-        }
-
-        .services::before,
-        .services::after {
-            content: "";
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 10 L60 30 L80 30 L65 45 L70 65 L50 50 L30 65 L35 45 L20 30 L40 30 Z' fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.1'/%3E%3C/svg%3E") no-repeat;
-            background-size: contain;
-        }
-
-        .services::before {
-            top: 20px;
-            left: 20px;
-        }
-
-        .services::after {
-            bottom: 20px;
-            right: 20px;
-        }
-
-        .services-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .services h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-style: italic;
-        }
-
-        .services h2 span {
-            color: var(--accent-orange);
-        }
-
-        .services > p {
-            margin-bottom: 3rem;
-            color: var(--accent-orange);
-        }
-
-        .service-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-        }
-
-        .service-card {
-            text-align: center;
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-card h3 {
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .service-card p {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-
-       
-        /* Reservation Section */
-        .reservation {
-            padding: 5rem 2rem;
-            background: #fff;
-            color: var(--primary-green-dark);
-        }
-
-        .reservation-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .reservation h2 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            font-style: italic;
-            color: var(--primary-green-dark);
-        }
-
-        .reservation h2 span {
-            color: var(--accent-orange);
-        }
-
-        .reservation-form {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-        }
-
-        .form-group label {
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            color: var(--primary-green-dark);
-        }
-
-        .form-group input,
-        .form-group select {
-            padding: 0.8rem;
-            border: 1px solid var(--primary-green);
-            border-radius: 25px;
-            background: #f6fff6;
-            color: var(--text-dark);
-        }
-
-        .form-group input::placeholder {
-            color: #999;
-        }
-
-        .submit-btn {
-            grid-column: 1 / -1;
-            padding: 1rem 3rem;
-            background: var(--accent-orange);
-            color: #fff;
-            border: 2px solid var(--accent-orange);
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 1rem;
-        }
-
-        .submit-btn:hover {
-            background: var(--primary-green-dark);
-            color: #fff;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary-green-dark);
-            color: var(--text-light);
-            padding: 3rem 2rem 1rem;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            color: var(--accent-orange);
-        }
-
-        .footer-section p,
-        .footer-section a {
-            color: var(--text-light);
-            text-decoration: none;
-            line-height: 1.8;
-        }
-
-        .footer-section a:hover {
-            color: var(--accent-orange-dark);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid var(--accent-orange-dark);
-            color: var(--accent-orange);
-            font-size: 0.9rem;
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .footer-social a {
-            display: inline-block;
-            width: 35px;
-            height: 35px;
-            background: var(--accent-orange);
-            border-radius: 50%;
-            text-align: center;
-            line-height: 35px;
-            transition: background 0.3s;
-        }
-
-        .footer-social a:hover {
-            background: var(--primary-green);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                flex-direction: row;
-                gap: 2rem;
-                position: static;
-                width: auto;
-                background: none;
-                padding: 0;
-                box-shadow: none;
-            }
-            .nav-links li {
-                width: auto;
-                text-align: left;
-            }
-            .nav-links a {
-                display: inline-block;
-                width: auto;
-                padding: 0;
-                font-size: 0.85rem;
-            }
-
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-text h1 {
-                font-size: 3rem;
-            }
-
-            .social-links {
-                position: static;
-                flex-direction: row;
-                justify-content: center;
-                margin-top: 2rem;
-            }
-
-            .story-container {
-                grid-template-columns: 1fr;
-            }
-
-            .story-images {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .service-cards {
-                grid-template-columns: 1fr;
-            }
-
-            .menu-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .reservation-form {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-text h1 {
-                font-size: 2rem;
-            }
-
-            .story-images {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
     <!-- Header -->
@@ -511,7 +12,7 @@
         <nav>
             <div class="logo">Delicious Meal</div>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#about">About</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -531,7 +32,7 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img class="hero-food" src="assets/hero-section-food.png">
+                <img class="hero-food" src="assets/hero-food.webp">
             </div>
         </div>
     </section>
@@ -547,9 +48,9 @@
             </div>
             <div class="story-content">
                 <h2>Discover <span>Our Story</span></h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <a href="#" class="btn-secondary">About Us</a>
+                <p>Welcome to Nexus Restaurant, where great taste meets comfort and style in the heart of Kaduna State. We pride ourselves on serving delicious meals and tasty snacks at affordable prices, making it the perfect spot for everyone, whether you're grabbing a quick bite or enjoying a relaxing meal.</p>
+                <p>Our restaurant is designed with an inviting, aesthetically pleasing atmosphere, complete with an outdoor kabana sitting area where you can unwind and connect with friends, colleagues, or family. Conveniently located next to Nexus Working Space, guests can easily access both work and leisure in one central location. We offer 24-hours electricity and free Wi-Fi, ensuring you dine, relax, or even get some work done without interruption.</p>
+                <a href="about.html" class="btn-secondary">About Us</a>
             </div>
         </div>
     </section>
@@ -558,27 +59,35 @@
     <section class="services" id="services">
         <div class="services-container">
             <h2>Our <span>Services</span></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+            <p>We offer a variety of delicious meals and tasty snacks, served in a welcoming space that blends comfort, style, and convenience. Enjoy breakfast, lunch, dinner, and beverages in our indoor and outdoor seating areas, with 24-hour electricity and free Wi-Fi for your convenience.</p>
             <div class="service-cards">
                 <div class="service-card">
-                    <div class="service-icon">☕</div>
+                    <div class="service-icon">
+                        <img src="assets/breakfast.webp" alt="">
+                    </div>
                     <h3>Breakfast</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore.</p>
+                    <p>Start your day with our hearty breakfast options, perfect for a quick bite or a relaxed morning meal.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🍽️</div>
+                    <div class="service-icon">
+                        <img src="assets/lunch.webp" alt="">
+                    </div>
                     <h3>Lunch</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore.</p>
+                    <p>Enjoy a variety of tasty snacks and meals, ideal for a midday break or a business lunch.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🍷</div>
+                    <div class="service-icon">
+                        <img src="assets/dinner.webp" alt="">
+                    </div>
                     <h3>Dinner</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore.</p>
+                    <p>Relax in the evening with our delicious dinner menu, served in a comfortable and stylish setting.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🥤</div>
+                    <div class="service-icon">
+                        <img src="assets/beverage.webp" alt="">
+                    </div>
                     <h3>Beverages</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore.</p>
+                    <p>Choose from a selection of refreshing drinks to complement your meal or enjoy on their own.</p>
                 </div>
             </div>
         </div>
@@ -622,8 +131,8 @@
     <footer id="contact">
         <div class="footer-container">
             <div class="footer-section">
-                <h3>🍽️ Delicious Meal</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in eleifend magna.</p>
+                <h3>🍽️ The Nexus Restaurant</h3>
+                <p>Welcome to Nexus Restaurant, where great taste meets comfort and style in the heart of Kaduna State. We pride ourselves on serving delicious meals and tasty snacks at affordable prices, making it the perfect spot for everyone.</p>
                 <div class="footer-social">
                     <a href="#">f</a>
                     <a href="#">t</a>
@@ -632,13 +141,13 @@
             </div>
             <div class="footer-section">
                 <h3>Contact Us</h3>
-                <p>📞 +12345678</p>
-                <p>✉️ info@deliciousmeal.com</p>
-                <p>📍 1234 Delicious Street, Food City, FC 12345</p>
+                <p>📞 09061494829</p>
+                <p>✉️ info@nexusrestaurant.com</p>
+                <p>📍 No. 8 Bida Road, Near C.B.N, Kaduna</p>
             </div>
             <div class="footer-section">
                 <h3>Sign up for news</h3>
-                <p>Get the latest updates and offers</p>
+                <p>Get the latest updates, offers, and events from Nexus Restaurant.</p>
                 <form style="margin-top: 1rem;">
                     <input type="email" placeholder="Your email" style="padding: 0.5rem; border-radius: 5px; border: none; margin-right: 0.5rem;">
                     <button type="submit" style="padding: 0.5rem 1rem; background: #f4b942; border: none; border-radius: 5px; color: white; cursor: pointer;">Subscribe</button>

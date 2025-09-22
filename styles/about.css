@@ -1,0 +1,171 @@
+:root {
+  --primary-green: #218838;
+  --primary-green-dark: #166c2b;
+  --accent-orange: #ffb347;
+  --accent-orange-dark: #e89c2a;
+  --light-bg: #f6fff6;
+  --text-dark: #222;
+  --text-light: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--light-bg);
+  color: var(--text-dark);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+}
+
+h3{
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+h4{
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.para{
+  font-size: 15px;
+}
+
+.main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 20rem;
+  padding: 50px;
+  background: linear-gradient(135deg, var(--primary-green-dark) 0%, var(--primary-green) 100%);
+  color: var(--accent-orange);
+  margin-bottom: 10px;
+  font-size: 30px;
+}
+
+.nexus{
+  color: var(--text-light);
+}
+
+.content{
+  display: flex;
+  gap: 60px;
+  padding: 20px;
+  margin: 20px
+}
+
+#About{
+  width: 23rem;
+}
+
+.left{
+  font-size: 15px;
+  flex: 1;
+}
+
+.right{
+  flex: 1;
+}
+
+img{
+  width: 25rem;
+  height: 20rem;
+  border-radius: 20px;
+}
+
+.last{
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  text-align: center;
+}
+
+.label{
+  color: var(--primary-green);
+}
+
+.box{
+  border: 1px solid var(--primary-green-dark);
+  background: #fff;
+  color: var(--text-dark);
+  box-shadow: 0 10px 20px rgba(33,136,56,0.08);
+  border-radius: 10px;
+  width: 12rem;
+  height: 10rem;
+  padding: 10px;
+  margin: 20px;
+}
+
+
+/* Responsiveness */
+
+@media screen and (max-width: 600px) {
+
+  .main {
+    height: 10rem;
+    padding: 30px;
+    background: linear-gradient(135deg, var(--primary-green-dark) 0%, var(--primary-green) 100%);
+    color: var(--accent-orange);
+    font-size: 10px;
+  }
+
+
+  .content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  h3{
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+  #About{
+  width: 15rem;
+}
+
+  img{
+    width: 15rem;
+    height: 12rem;
+  }
+
+  .last {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 15px;
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .para{
+  font-size: 10px;
+}
+
+  .box {
+    border: 1px solid var(--primary-green-dark);
+    border-radius: 10px;
+    width: 100%;
+    min-width: 0;
+    max-width: 400px;
+    height: auto;
+    padding: 10px;
+    margin: 0 auto;
+    background: #fff;
+    color: var(--text-dark);
+    box-sizing: border-box;
+  }
+
+}
+
+
